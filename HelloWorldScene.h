@@ -4,6 +4,9 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
+
+//修改分支
+
 class HelloWorld : public cocos2d::Layer
 {
 public:
