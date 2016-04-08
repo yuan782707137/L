@@ -2,22 +2,25 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-using namespace cocos2d;
+#include "Box2D.h"
 
-
-//修改分支
-
-class HelloWorld : public cocos2d::Layer
+class HelloWorld : public cocos2d::CCLayer
 {
 public:
-    static cocos2d::Scene* createScene();
-    virtual bool init();
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    CREATE_FUNC(HelloWorld);
+    ~HelloWorld();
+    HelloWorld();
     
-    Sprite* actionSp;
+    // returns a Scene that contains the HelloWorld as the only child
+    static cocos2d::CCScene* scene();
     
-    void callfunc();
+    // adds a new sprite at a given coordinate
+    void addNewSpriteWithCoords(cocos2d::CCPoint p);
+    virtual void draw();
+    virtual void ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+    void tick(float dt);
+    
+private:
+    b2World* world;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
